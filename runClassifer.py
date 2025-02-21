@@ -4,6 +4,7 @@ from transformers import AutoImageProcessor, ResNetForImageClassification
 # from datasets import load_dataset
 from PIL import Image
 import tracemalloc
+import subprocess
 import gc
 import os
 import platform
