@@ -70,7 +70,7 @@ def track_performance(func):
         return result
     return wrapper
 
-def classify_image(image_path):
+def classify_image(image_path, processor, model):
     # https://huggingface.co/docs/datasets/en/loading
 
     # dataset = load_dataset("huggingface/cats-image")
@@ -81,9 +81,6 @@ def classify_image(image_path):
         pil_image = image_path
     else:
         pil_image = Image.open(image_path)
-
-    processor = AutoImageProcessor.from_pretrained("microsoft/resnet-50")
-    model = ResNetForImageClassification.from_pretrained("microsoft/resnet-50")
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model = model.to(device)
@@ -100,6 +97,8 @@ def classify_image(image_path):
 
 @track_performance
 def main():
+    processor = AutoImageProcessor.from_pretrained("microsoft/resnet-50")
+    model = ResNetForImageClassification.from_pretrained("microsoft/resnet-50")
     directory = "pictures"
     iterations = 0
     maxIterations = 100
@@ -109,7 +108,7 @@ def main():
         if os.path.isfile(f):
             iterations += 1
             image_path = f
-            prediction = classify_image(image_path)
+            prediction = classify_image(image_path, processor, model)
             print(f"Predicted class: {prediction}")
         if iterations > maxIterations:
             break
