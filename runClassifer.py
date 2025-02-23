@@ -83,7 +83,7 @@ def classify_image(image_path, processor, model):
     else:
         pil_image = Image.open(image_path)
 
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cuda" if torch.cuda.is_available() else "cpu" #IF YOU'RE TRYING TO BENCHMARK CPU, CHANGE THIS LINE TO 'device = "cpu"'
     model = model.to(device)
 
     inputs = processor(pil_image, return_tensors="pt") # image processing needed for model
