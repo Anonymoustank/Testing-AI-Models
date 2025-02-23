@@ -102,7 +102,7 @@ def main():
     model = ResNetForImageClassification.from_pretrained("microsoft/resnet-50")
     directory = "pictures"
     iterations = 0
-    maxIterations = 100
+    maxIterations = 20000
     for filename in os.listdir(directory):
         f = os.path.join(directory, filename)
 
