@@ -1,0 +1,19 @@
+#!/bin/bash
+#SBATCH --job-name=classifier_job        # Job name
+#SBATCH --output=classifier_output.log   # Output file name
+#SBATCH --error=classifier_error.log     # Error file name
+#SBATCH --time=02:00:00                  # Max run time (HH:MM:SS)
+#SBATCH --ntasks=1                       # Number of tasks
+#SBATCH --cpus-per-task=4                # Number of CPUs per task
+#SBATCH --mem=8GB                        # Memory per node
+#SBATCH --gres=gpu:4                     # Request 4 GPU
+#SBATCH --partition=ice-gpu              # Queue to submit to
+
+# Load required modules (if any, e.g. Python)
+module load python                # Example, adjust according to your environment
+
+# Activate virtual environment (if necessary)
+# source /path/to/your/virtualenv/bin/activate
+
+# Run the Python script
+/usr/bin/python /home/hice1/pkadekodi3/parallelRunClassifer.py > /home/hice1/pkadekodi3/outputMultiGPU.txt 2>&1
