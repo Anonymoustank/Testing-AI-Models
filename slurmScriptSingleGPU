@@ -9,11 +9,7 @@
 #SBATCH --gres=gpu:1                     # Request 1 GPU
 #SBATCH --partition=ice-gpu              # Queue to submit to
 
-# Load required modules (if any, e.g. Python)
-module load python                # Example, adjust according to your environment
-
-# Activate virtual environment (if necessary)
-# source /path/to/your/virtualenv/bin/activate
+module load python
 
 # Run the Python script
 /usr/bin/python /home/hice1/pkadekodi3/runClassifer.py > /home/hice1/pkadekodi3/outputSingleGPU.txt 2>&1
