@@ -9,11 +9,7 @@
 #SBATCH --gres=gpu:4                     # Request 4 GPU
 #SBATCH --partition=ice-gpu              # Queue to submit to
 
-# Load required modules (if any, e.g. Python)
-module load python                # Example, adjust according to your environment
-
-# Activate virtual environment (if necessary)
-# source /path/to/your/virtualenv/bin/activate
+module load python
 
 # Run the Python script
 /usr/bin/python /home/hice1/pkadekodi3/parallelRunClassifer.py > /home/hice1/pkadekodi3/outputMultiGPU.txt 2>&1
